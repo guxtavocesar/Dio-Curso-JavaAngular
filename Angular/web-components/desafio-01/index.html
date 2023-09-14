@@ -11,30 +11,28 @@
 
     <!-- Inserindo componentes JS -->
     <script src="src/Components/CardNews.js" defer></script>
-    <script src="src/Components/TituloDinamico.js"></script>
+    <script src="src/Components/TituloDinamico.js" defer></script>
 </head>
 
 <body>
     <div class="container">
+        <card-news 
+        autor="Gustavo"
+        tittle="Darth Vader Contrata"
+        photo="assets/darth-vader-dev.jpg"
+        content="Darth Vader procura desenvolvedores que sabem trabalhar com components"
+    >
 
-        <div class="card">
-            <div class="card__left">
-                <span>By Gustavo César</span>
-                <h1>Darth Vader contrata Devs</h1>
-                <p>Darth Vader procura desenvolvedores que sabem trabalhar com components</p>
-            </div>
+    </card-news><br>
 
-            <div class="card__right">
-                <img src="assets/darth-vader-dev.jpg" alt="Darth vader encarando você fixamente">
-            </div>
-        </div>
-
-    </div>
-
-    <card-news></card-news>
-
-    <titulo-dinamico titulo="NOTICIA URGENTE"></titulo-dinamico>
-    <titulo-dinamico titulo="NOVIDADE"></titulo-dinamico>
+    <div class="container">
+        <card-news 
+        autor="Phillipe Leão"
+        tittle="Oppenheimer - A hipertrofia do Individualismo"
+        photo="assets/oppenheimer.jpg"
+        content="Crítica do mais novo filme de Christopher Nolan 'Oppenheimer'"
+    >
+    </card-news><br>
 </body>
 
 </html>

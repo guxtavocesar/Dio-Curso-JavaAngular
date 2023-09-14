@@ -3,9 +3,7 @@ class TituloDinamico extends HTMLElement {
         super();
 
         const shadow = this.attachShadow({ mode: "open" });
-    }
-
-    connectedCallback() {
+    
         // Obtenha o valor do atributo "titulo" após o componente ser conectado
         const titulo = this.getAttribute("titulo");
 
@@ -22,10 +20,9 @@ class TituloDinamico extends HTMLElement {
         `;
 
         // Anexe ao Shadow DOM
-        const shadow = this.shadowRoot;
         shadow.appendChild(componentRoot);
         shadow.appendChild(style);
-    }
+    }    
 }
 
 customElements.define('titulo-dinamico', TituloDinamico);
