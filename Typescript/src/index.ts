@@ -1,57 +1,57 @@
-console.log("Hello Word");
+// Decorators
 
-// Tipos primitivos: boolean, number, string
-let ligado: boolean = true;
-let nome: string = `Gustavo César`;
-let idade: number = 18;
-
-/* Tipos Especiais de variáveis */
-//Null
-//Undefined
-let nulo:null = null;
-let indefinido:undefined = undefined;
-
-//Tipos abrangentes: Any, Void
-let retorno:void;
-function executaQuery():void {
-    //...
+function ExibirNome(target: any) {
+    console.log(target);
 }
 
-// Aceita qualquer tipo
-let retornoView:any = ["Gustavo César", 18, null, true, ""]
+@ExibirNome
+class Funcionario { }
 
-/*________________________________________________________*/
+// *________________________________*
 
-//Objeto - Sem previsibilidade
-let produto:object = {
-    name: "Pepsi cola",
-    preco: 15.00,
-    fabrica: "Pepsico",
-    pais: "United States of America"
-};
-
-
-// Objeto tipado - Com previsibilidade
-type produtoLoja = {
-    name:string,
-    preco:number,
-    fabrica: string,
-    pais:string
+function apiVersion(version: string) {
+    return (target: any) => {
+        Object.assign(target.prototype, { __version: version });
+    }
 }
 
-let meuProduto:produtoLoja = {
-    name: "Coca cola",
-    preco: 20.00,
-    fabrica: "Coke",
-    pais: "United States of America"
+@apiVersion("4.10")
+class Api { }
+
+const api = new Api;
+console.log(api);
+
+// Atributo Decorator
+
+function minLenght(lenght: number) {
+    return (target: any, key: string) => {
+        let __value = target[key]; // Alvo para o decorator
+
+        const getter = () => __value;
+        const setter = (value: string) => {
+            if (value.length < lenght) {
+                throw new Error(`Tamanho menor do que ${lenght}`);
+            } else {
+                __value = value;
+            }
+
+            Object.defineProperty(target, key, {
+                get: getter,
+                set: setter,
+            });
+        }
+    }
 }
 
-/*________________________________________________________*/
+class Api2 {
+    @minLenght(3)
+    name: string;
 
-// Arrays
-let dados: string[] = ["Gustavo", "Cesar", "Luzi", "Pereira"];
-let dados2: Array<string> = ["Gustavo", "Cesar", "Luzi", "Pereira"];
+    constructor(name: string) {
+        this.name = name;
+    }
+}
 
-/*________________________________________________________*/
+const api2 = new Api2("Produtos");
+console.log(api2.name);
 
-//
