@@ -1,0 +1,45 @@
+<h1>My Card</h1>
+<p>card works!</p>
+<button>Hello World!</button>
+
+<ul>
+    <!-- Através do ngFor, voce cria estrutura de repeticoes para elementos/components angular e usá-los dinamicamente -->
+    <li *ngFor="let p of produtos; let i = index"
+        (click)="remover(i)"
+    >
+        {{ i }} - {{ p }}
+    </li>
+    <button (click)="adicionar()">Adicionar</button>
+    <!-- <button (click)="remover(i)">Remover</button> -->
+</ul>
+
+<!-- Blocos condicionais com HTML  -->
+<div [ngSwitch]="menuType">
+
+    <div *ngSwitchDefault>
+        <ul>
+            <li> Editar Perfil</li>
+            <li> Adicionar cartão</li>
+        </ul>
+    </div>
+
+    <div *ngSwitchCase="'admin'">
+        <ul>
+            <li> Editar Perfil</li>
+            <li> Adicionar cartão</li>
+            <li> Gerenciar usuários</li>
+        </ul>
+    </div>
+
+    <div *ngSwitchCase="'superuser'">
+        <ul>
+            <li> Editar Perfil</li>
+            <li> Adicionar cartão</li>
+            <li> Gerenciar usuários</li>
+            <li> Gerencia Admins</li>
+        </ul>
+    </div>
+
+
+
+</div>

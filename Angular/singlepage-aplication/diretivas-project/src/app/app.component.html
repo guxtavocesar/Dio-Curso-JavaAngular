@@ -1,0 +1,15 @@
+<!-- Utilizando NgIfElse para exibição do card component, se o isAliveCard, propriedade que define se um card está
+vivo ou não, estiver como false, a condicão else chama o ng-template -->
+<app-card *ngIf="isAliveCard; else elseBlock"></app-card>
+
+<app-comp-atributos>
+  <h2>Olá</h2>
+  <p>Eu vim de fora</p>
+</app-comp-atributos>
+
+<!-- Criando um bloco de estrutura que é chamada de forma condicional -->
+<ng-template #elseBlock>
+  <p>Olá, sou um bloco secreto</p>
+</ng-template>
+
+<router-outlet></router-outlet>
